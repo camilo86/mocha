@@ -128,6 +128,13 @@ mocha.setup = function(opts) {
   if (typeof opts === 'string') {
     opts = {ui: opts};
   }
+
+  if ('noHighlighting' in opts) {
+    Mocha.utils.deprecate(
+      'noHighlighting is DEPRECATED. Instead, provide {reporterOption: {highlight: false}} to mocha.setup()'
+    );
+  }
+
   for (var opt in opts) {
     if (opts.hasOwnProperty(opt)) {
       this[opt](opts[opt]);
